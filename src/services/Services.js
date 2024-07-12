@@ -5,8 +5,16 @@ class Services {
     this.model = nomeDoModel;
   }
 
+  async criaRegistro(dados) {
+    return dataSource[this.model].create(dados);
+  }
+
   async pegaTodosOsRegistros() {
     return dataSource[this.model].findAll();
+  }
+
+  async pegaUmRegistro(id) {
+    return dataSource[this.model].findByPk(id);
   }
 
   async atualizaRegistro(dadosAtualizados, id) {
@@ -17,6 +25,12 @@ class Services {
       return false;
     }
     return true;
+  }
+
+  async excluiRegistro(id) {
+    return dataSource[this.model].destroy({
+      where: { id: id },
+    });
   }
 }
 
