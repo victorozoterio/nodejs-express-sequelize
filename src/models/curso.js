@@ -7,7 +7,10 @@ module.exports = (sequelize, DataTypes) => {
       Curso.belongsTo(models.Categoria, {
         foreignKey: 'categoria_id',
       });
-      Curso.belongsTo(models.Matricula, {
+      Curso.belongsTo(models.Pessoa, {
+        foreignKey: 'docente_id',
+      });
+      Curso.hasMany(models.Matricula, {
         foreignKey: 'curso_id',
       });
     }
